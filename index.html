@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Page</title>
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 50px;
+            background: #f4f4f4;
+        }
+
+        .container1 {
+           
+            display: flex;
+            padding: 20px;
+            margin: 10px;
+            width: 80%;
+            background: white;
+            background-color:#cedae7;
+        }
+        img{
+            margin: 10px;
+        }
+        
+        .message {
+            padding: 10px;
+            text-align: center;
+            gap:20px;
+            margin: 10px;
+            width: 40%;
+            font-size: xx-large;
+        }
+
+        .form1 {
+            padding: 20px;
+            
+            width: 60%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Signup Form Styling */
+        #signup {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group label,
+        .input-group input {
+            width: 48%;
+        }
+
+        /* Common Input Styling */
+        form input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        form button:hover {
+            background: #0056b3;
+        }
+
+        .toggle {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Login Form - Column Layout */
+        #login {
+            width: 80%;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #login label,
+        #login input {
+            width: 100%;
+        }
+
+        #login button {
+            width: 100%;
+        }
+        @media (max-width: 576px) {
+    body {
+        flex-direction: column;
+        padding: 5px;
+        height: auto;
+    }
+
+    .container-custom {
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* Message section (Image & Text) at the top */
+    .message {
+        order: -1; /* Moves it above the form */
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+
+    .message img {
+        max-width: 150px;
+        height: auto;
+    }
+
+    /* Form section below */
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    input, button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <div class="message" id="message-box">
+            <p id="msg">Let's Make <br> it Happen <br> Together!</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkkoPdutIJ3NLf7QHNgnwD0VC81VrjsiaI4Q&s" alt="" width="80%" >
+        </div>
+
+        <div class="form1">
+            <h2 id="form-title">Create an Account</h2>
+
+            <!-- Signup Form -->
+            <form id="signup">
+                <div class="input-group">
+                    <label for="name">First Name</label>
+                    <label for="lastn">Last Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="name">
+                    <input type="text" id="lastn">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <label for="add">Address</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email">
+                    <input type="text" id="add">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Create Password</label>
+                    <label for="confirm">Confirm Password</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password">
+                    <input type="password" id="confirm">
+                </div>
+
+                <input type="checkbox" required>
+                <label>Creating your account and accepting Terms & Conditions.</label>
+
+                <button type="submit">Create Account</button>
+                <button>Sign-up with Google</button>
+                <button>Sign-up with Facebook</button>
+
+                <p>Already have an account? <span class="toggle" onclick="toggleForm()">Login</span></p>
+            </form>
+
+            <!-- Login Form  -->
+            <form id="login">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Username" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Password">
+
+                <button type="submit">Submit</button>
+
+                <p>Don't have an account? <span class="toggle" onclick="toggleForm()">Sign up</span></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const signupForm = document.getElementById("signup");
+            const loginForm = document.getElementById("login");
+            const formTitle = document.getElementById("form-title");
+            const messageBox = document.getElementById("message-box");
+
+            if (signupForm.style.display === "flex" || signupForm.style.display === '') {
+                signupForm.style.display = "none";
+                loginForm.style.display = "flex";
+                formTitle.textContent = "Login";
+                messageBox.classList.add("hidden");  // Hide message box
+            } else {
+                signupForm.style.display = "flex";
+                loginForm.style.display = "none";
+                formTitle.textContent = "Create an Account";
+                messageBox.classList.remove("hidden");  // Show message box
+            }
+        }
+    </script>
+</body>
+
+</html>
